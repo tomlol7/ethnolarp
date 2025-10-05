@@ -12,11 +12,10 @@
     --muted: #8b94a3;
     --text: #1f2937;
     --divider: #eceff3;
-    --euro: #0b66a8;             /* European header blue */
-    --subaf: #7a1c6a;            /* Sub-Saharan header purple */
-    --ean:  #d94b2b;             /* East Asian & Native American orange */
-    --wan:  #4b2aa6;             /* Western Asian & North African deep purple */
-    --dot-blue: #1f78d1;
+    --euro: #0b66a8;
+    --subaf: #7a1c6a;
+    --ean:  #d94b2b;
+    --wan:  #4b2aa6;
     font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   }
 
@@ -30,24 +29,19 @@
     color:var(--text);
   }
 
-  /* outer container approximates the screenshot column */
   .container{
     width: 420px;
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 0;
     box-shadow: 0 12px 28px rgba(15,23,42,0.06);
     padding: 0 0 20px 0;
     overflow: hidden;
     border: 1px solid rgba(15,23,42,0.03);
   }
 
-  /* top spacer to mimic cropping from screenshot */
-  .spacer { height:10px; }
-
-  /* section header bar */
   .section {
     margin: 0 14px 14px 14px;
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
     border: 1px solid var(--divider);
     background: #fff;
@@ -58,32 +52,17 @@
     align-items:center;
     justify-content:space-between;
     padding: 10px 14px;
-    gap:12px;
+    background: var(--euro);
+    color:#fff;
   }
 
-  .section-title {
-    display:flex;
-    align-items:center;
-    gap:12px;
-    font-weight:700;
-    font-size:16px;
-    color: white;
-    padding: 10px 14px;
-    width:100%;
-    box-sizing:border-box;
-  }
-
-  .section-title .title-inner {
-    display:flex;
-    align-items:center;
-    gap:12px;
-    flex:1;
-  }
+  .subaf .section-header { background: var(--subaf); }
+  .ean .section-header { background: var(--ean); }
+  .wan .section-header { background: var(--wan); }
 
   .header-left { display:flex; align-items:center; gap:12px; }
-  .header-dot { width:12px; height:12px; border-radius:50%; flex:0 0 12px; box-shadow:0 1px 0 rgba(0,0,0,0.06) inset; }
+  .header-dot { width:12px; height:12px; border-radius:50%; }
   .header-name { font-weight:800; font-size:15px; }
-
   .header-pct {
     font-weight:800;
     font-size:15px;
@@ -91,19 +70,6 @@
     text-align:right;
   }
 
-  /* fill the header with the color background and place right pct */
-  .section .header-bar {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:var(--euro);
-    color:#fff;
-  }
-  .section.subaf .header-bar{ background:var(--subaf); }
-  .section.ean  .header-bar{ background:var(--ean); }
-  .section.wan  .header-bar{ background:var(--wan); }
-
-  /* body rows (list) */
   .list {
     background: #fff;
     padding: 6px 12px;
@@ -127,7 +93,11 @@
   }
 
   .dot {
-    width:10px; height:10px; border-radius:50%; margin-top:6px; flex:0 0 10px;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    margin-top:6px;
+    flex:0 0 10px;
   }
 
   .label {
@@ -140,8 +110,8 @@
     font-weight:600;
     font-size:15px;
     color:var(--text);
-    white-space:normal;
   }
+
   .label .note {
     font-size:13px;
     color:var(--muted);
@@ -154,25 +124,13 @@
     color:var(--text);
     flex:0 0 72px;
     text-align:right;
-    padding-left:6px;
   }
 
-  /* indentation for child rows (sub groups) */
   .child {
-    padding-left: 28px; /* indent */
+    padding-left: 28px;
   }
 
-  /* small repeated thin separators where screenshot shows double lines */
-  .thin-sep {
-    height:8px;
-    border-top:1px solid #f3f4f6;
-    margin:0 6px;
-  }
-
-  /* last footer spacing to mimic screenshot cropping */
-  .footer-spacer { height:10px; }
-
-  /* color dots approximations */
+  /* Color dots */
   .blue1 { background: #1f78d1; }
   .blue2 { background: #6fb0ff; }
   .teal  { background: #2aa79a; }
@@ -182,7 +140,6 @@
   .yellow { background: #f5c542; }
   .purple { background: #7a1c6a; }
 
-  /* small responsiveness */
   @media (max-width:440px){
     .container{ width:92%; }
   }
@@ -190,274 +147,85 @@
 </head>
 <body>
   <div class="container" role="region" aria-label="Ancestry static replica">
-    <div class="spacer"></div>
 
     <!-- European -->
     <div class="section">
-      <div class="header-bar section-header" style="background:var(--euro); color:#fff;">
+      <div class="section-header">
         <div class="header-left">
           <div class="header-dot" style="background:transparent"></div>
           <div class="header-name">European</div>
         </div>
         <div class="header-pct">50.3%</div>
       </div>
-
-      <div class="list" aria-hidden="false">
-        <div class="row">
-          <div class="left">
-            <div class="dot blue1"></div>
-            <div class="label">
-              <div class="name">Southern European</div>
-            </div>
-          </div>
-          <div class="pct">42.5%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot blue2"></div>
-            <div class="label">
-              <div class="name">Spanish & Portuguese</div>
-              <div class="note">—</div>
-            </div>
-          </div>
-          <div class="pct">21.8%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot blue1"></div>
-            <div class="label"><div class="name">Italian</div></div>
-          </div>
-          <div class="pct">10.2%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot blue2"></div>
-            <div class="label"><div class="name">Broadly Southern European</div></div>
-          </div>
-          <div class="pct">10.5%</div>
-        </div>
-
-        <div class="row">
-          <div class="left">
-            <div class="dot teal"></div>
-            <div class="label"><div class="name">Ashkenazi Jewish</div></div>
-          </div>
-          <div class="pct">2.2%</div>
-        </div>
-
-        <div class="row">
-          <div class="left">
-            <div class="dot blue2"></div>
-            <div class="label"><div class="name">Northwestern European</div></div>
-          </div>
-          <div class="pct">1.3%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot blue1"></div>
-            <div class="label"><div class="name">British & Irish</div></div>
-          </div>
-          <div class="pct">1.0%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot blue2"></div>
-            <div class="label"><div class="name">Broadly Northwestern European</div></div>
-          </div>
-          <div class="pct">0.3%</div>
-        </div>
-
-        <div class="row">
-          <div class="left">
-            <div class="dot blue1"></div>
-            <div class="label"><div class="name">Broadly European</div></div>
-          </div>
-          <div class="pct">4.3%</div>
-        </div>
+      <div class="list">
+        <div class="row"><div class="left"><div class="dot blue1"></div><div class="label"><div class="name">Southern European</div></div></div><div class="pct">42.5%</div></div>
+        <div class="row child"><div class="left"><div class="dot blue2"></div><div class="label"><div class="name">Spanish & Portuguese</div></div></div><div class="pct">21.8%</div></div>
+        <div class="row child"><div class="left"><div class="dot blue1"></div><div class="label"><div class="name">Italian</div></div></div><div class="pct">10.2%</div></div>
+        <div class="row child"><div class="left"><div class="dot blue2"></div><div class="label"><div class="name">Broadly Southern European</div></div></div><div class="pct">10.5%</div></div>
+        <div class="row"><div class="left"><div class="dot teal"></div><div class="label"><div class="name">Ashkenazi Jewish</div></div></div><div class="pct">2.2%</div></div>
+        <div class="row"><div class="left"><div class="dot blue2"></div><div class="label"><div class="name">Northwestern European</div></div></div><div class="pct">1.3%</div></div>
+        <div class="row child"><div class="left"><div class="dot blue1"></div><div class="label"><div class="name">British & Irish</div></div></div><div class="pct">1.0%</div></div>
+        <div class="row child"><div class="left"><div class="dot blue2"></div><div class="label"><div class="name">Broadly Northwestern European</div></div></div><div class="pct">0.3%</div></div>
+        <div class="row"><div class="left"><div class="dot blue1"></div><div class="label"><div class="name">Broadly European</div></div></div><div class="pct">4.3%</div></div>
       </div>
     </div>
 
     <!-- Sub-Saharan African -->
     <div class="section subaf">
-      <div class="header-bar section-header" style="background:var(--subaf); color:#fff;">
+      <div class="section-header">
         <div class="header-left">
           <div class="header-dot"></div>
           <div class="header-name">Sub-Saharan African</div>
         </div>
         <div class="header-pct">32.4%</div>
       </div>
-
       <div class="list">
-        <div class="row">
-          <div class="left">
-            <div class="dot magenta"></div>
-            <div class="label"><div class="name">West African</div></div>
-          </div>
-          <div class="pct">16.2%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot pink"></div>
-            <div class="label"><div class="name">Senegambian & Guinean</div></div>
-          </div>
-          <div class="pct">13.4%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot magenta"></div>
-            <div class="label"><div class="name">Broadly West African</div></div>
-          </div>
-          <div class="pct">2.8%</div>
-        </div>
-
-        <div class="row">
-          <div class="left">
-            <div class="dot magenta"></div>
-            <div class="label"><div class="name">Congolese & Southern East African</div></div>
-          </div>
-          <div class="pct">15.0%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot purple"></div>
-            <div class="label"><div class="name">Angolan & Congolese</div></div>
-          </div>
-          <div class="pct">10.4%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot magenta"></div>
-            <div class="label"><div class="name">Southern East African</div></div>
-          </div>
-          <div class="pct">2.9%</div>
-        </div>
-
-        <div class="row">
-          <div class="left">
-            <div class="dot magenta"></div>
-            <div class="label"><div class="name">Broadly Congolese & Southern East African</div></div>
-          </div>
-          <div class="pct">1.7%</div>
-        </div>
-
-        <div class="row">
-          <div class="left">
-            <div class="dot magenta"></div>
-            <div class="label"><div class="name">Broadly Sub-Saharan African</div></div>
-          </div>
-          <div class="pct">1.2%</div>
-        </div>
+        <div class="row"><div class="left"><div class="dot magenta"></div><div class="label"><div class="name">West African</div></div></div><div class="pct">16.2%</div></div>
+        <div class="row child"><div class="left"><div class="dot pink"></div><div class="label"><div class="name">Senegambian & Guinean</div></div></div><div class="pct">13.4%</div></div>
+        <div class="row child"><div class="left"><div class="dot magenta"></div><div class="label"><div class="name">Broadly West African</div></div></div><div class="pct">2.8%</div></div>
+        <div class="row"><div class="left"><div class="dot magenta"></div><div class="label"><div class="name">Congolese & Southern East African</div></div></div><div class="pct">15.0%</div></div>
+        <div class="row child"><div class="left"><div class="dot purple"></div><div class="label"><div class="name">Angolan & Congolese</div></div></div><div class="pct">10.4%</div></div>
+        <div class="row child"><div class="left"><div class="dot magenta"></div><div class="label"><div class="name">Southern East African</div></div></div><div class="pct">2.9%</div></div>
+        <div class="row"><div class="left"><div class="dot magenta"></div><div class="label"><div class="name">Broadly Congolese & Southern East African</div></div></div><div class="pct">1.7%</div></div>
+        <div class="row"><div class="left"><div class="dot magenta"></div><div class="label"><div class="name">Broadly Sub-Saharan African</div></div></div><div class="pct">1.2%</div></div>
       </div>
     </div>
 
     <!-- East Asian & Native American -->
     <div class="section ean">
-      <div class="header-bar section-header" style="background:var(--ean); color:#fff;">
+      <div class="section-header">
         <div class="header-left">
           <div class="header-dot"></div>
           <div class="header-name">East Asian & Native American</div>
         </div>
         <div class="header-pct">13.1%</div>
       </div>
-
       <div class="list">
-        <div class="row">
-          <div class="left">
-            <div class="dot yellow"></div>
-            <div class="label"><div class="name">Native American</div></div>
-          </div>
-          <div class="pct">10.1%</div>
-        </div>
-
-        <div class="row">
-          <div class="left">
-            <div class="dot orange"></div>
-            <div class="label"><div class="name">Chinese & Southeast Asian</div></div>
-          </div>
-          <div class="pct">1.0%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot yellow"></div>
-            <div class="label"><div class="name">Filipino & Austronesian</div></div>
-          </div>
-          <div class="pct">1.0%</div>
-        </div>
-
-        <div class="row">
-          <div class="left">
-            <div class="dot orange"></div>
-            <div class="label"><div class="name">Broadly East Asian & Native American</div></div>
-          </div>
-          <div class="pct">2.0%</div>
-        </div>
+        <div class="row"><div class="left"><div class="dot yellow"></div><div class="label"><div class="name">Native American</div></div></div><div class="pct">10.1%</div></div>
+        <div class="row"><div class="left"><div class="dot orange"></div><div class="label"><div class="name">Chinese & Southeast Asian</div></div></div><div class="pct">1.0%</div></div>
+        <div class="row child"><div class="left"><div class="dot yellow"></div><div class="label"><div class="name">Filipino & Austronesian</div></div></div><div class="pct">1.0%</div></div>
+        <div class="row"><div class="left"><div class="dot orange"></div><div class="label"><div class="name">Broadly East Asian & Native American</div></div></div><div class="pct">2.0%</div></div>
       </div>
     </div>
 
     <!-- Western Asian & North African -->
     <div class="section wan">
-      <div class="header-bar section-header" style="background:var(--wan); color:#fff;">
+      <div class="section-header">
         <div class="header-left">
           <div class="header-dot"></div>
           <div class="header-name">Western Asian & North African</div>
         </div>
         <div class="header-pct">3.0%</div>
       </div>
-
       <div class="list">
-        <div class="row">
-          <div class="left">
-            <div class="dot purple"></div>
-            <div class="label"><div class="name">North African</div></div>
-          </div>
-          <div class="pct">2.2%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot purple"></div>
-            <div class="label"><div class="name">Arab, Egyptian & Levantine</div></div>
-          </div>
-          <div class="pct">0.5%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot purple"></div>
-            <div class="label"><div class="name">Egyptian</div></div>
-          </div>
-          <div class="pct">0.4%</div>
-        </div>
-
-        <div class="row child">
-          <div class="left">
-            <div class="dot purple"></div>
-            <div class="label"><div class="name">Broadly Arab, Egyptian & Levantine</div></div>
-          </div>
-          <div class="pct">0.1%</div>
-        </div>
-
-        <div class="row">
-          <div class="left">
-            <div class="dot purple"></div>
-            <div class="label"><div class="name">Broadly Western Asian & North African</div></div>
-          </div>
-          <div class="pct">0.3%</div>
-        </div>
+        <div class="row"><div class="left"><div class="dot purple"></div><div class="label"><div class="name">North African</div></div></div><div class="pct">2.2%</div></div>
+        <div class="row child"><div class="left"><div class="dot purple"></div><div class="label"><div class="name">Arab, Egyptian & Levantine</div></div></div><div class="pct">0.5%</div></div>
+        <div class="row child"><div class="left"><div class="dot purple"></div><div class="label"><div class="name">Egyptian</div></div></div><div class="pct">0.4%</div></div>
+        <div class="row child"><div class="left"><div class="dot purple"></div><div class="label"><div class="name">Broadly Arab, Egyptian & Levantine</div></div></div><div class="pct">0.1%</div></div>
+        <div class="row"><div class="left"><div class="dot purple"></div><div class="label"><div class="name">Broadly Western Asian & North African</div></div></div><div class="pct">0.3%</div></div>
       </div>
     </div>
 
-    <div class="footer-spacer"></div>
   </div>
 </body>
 </html>
